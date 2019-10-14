@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  	<modelVersion>4.0.0</modelVersion>
+  	
+	<!-- Master Parent POM -->
+	<parent>		
+		<artifactId>eric-project-parent</artifactId>
+		<groupId>com.eric.common</groupId>
+
+		<version>4.4.0.5</version>					
+
+		<!--
+		
+		<version>4.4.1.0</version>						
+		<version>4.4.0.5</version>		
+		-->
+		<!--
+		<relativePath>../../EricParentAsset/projects/eric-project-parent/</relativePath>			
+		-->
+	</parent>
+	
+	<!-- 
+		Shell Project Common
+	-->		
+	
+	<groupId>com.eric.common</groupId>
+	<artifactId>shell-project-common</artifactId>
+	<name>shell-project-common</name>
+	<version>4.4.1.0</version>
+	<packaging>jar</packaging>		
+ 	
+  <dependencies>
+
+		<!-- 3rd Party Jars -->
+
+				  <dependency>	  	
+							<groupId>junit</groupId>
+							<artifactId>junit</artifactId>
+				  </dependency>	  	
+			
+					<dependency>	  	  	
+							<groupId>commons-logging</groupId>
+							<artifactId>commons-logging</artifactId>
+				  </dependency>	  	  	
+			
+					<dependency>	  	  	
+							<groupId>commons-lang</groupId>
+							<artifactId>commons-lang</artifactId>
+			  	</dependency>
+			  	
+					<dependency>
+						<groupId>commons-codec</groupId>
+						<artifactId>commons-codec</artifactId>
+						<version>1.10</version>
+					</dependency>			  	
+					
+					<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-context</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-core</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-test</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-beans</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-aop</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-tx</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjweaver</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+							<groupId>aopalliance</groupId>
+							<artifactId>aopalliance</artifactId>
+			  	</dependency>	  	  	
+			
+					<dependency>
+					   	<groupId>cglib</groupId>
+					   	<artifactId>cglib-nodep</artifactId>
+				  </dependency>	  	  	
+			
+					<dependency>
+							<groupId>org.slf4j</groupId>
+							<artifactId>slf4j-api</artifactId>
+				  </dependency>	 
+				  	
+					<dependency>
+							<groupId>org.slf4j</groupId>
+							<artifactId>slf4j-log4j12</artifactId>
+				  </dependency>	 	  	 	  	
+			
+					<dependency>
+							<groupId>org.hamcrest</groupId>
+							<artifactId>hamcrest-core</artifactId>
+			  	</dependency>
+			
+			   	<dependency>	  	  	
+							<groupId>log4j</groupId>
+							<artifactId>log4j</artifactId>
+			  	</dependency>	  	  	
+			  	  	
+					<dependency>
+							<groupId>com.googlecode.json-simple</groupId>
+			    		<artifactId>json-simple</artifactId>
+			    		<version>1.1</version>
+					</dependency>
+  	  	
+  </dependencies>
+	
+</project>

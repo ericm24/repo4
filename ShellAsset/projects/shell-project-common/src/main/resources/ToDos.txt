@@ -1,0 +1,101 @@
+
+-4.4.1.0 ==> 4.4.0.5
+
+	-14-Oct-2019 
+		-Added 4.4.1.0 back as now JDK1.8 has support, funny, really funny!  Shows how long this was drift... 
+	
+	-ToDos:
+		-Fix initially for 'nix file systems, right now only works on Win, NTFS, FAT32.
+		-Confirmed above, cannot seem to find filesystem...me guesses its slash v. backslash.
+		-Add to source control?
+		-Determine if we're still gonna do string encrypt/decrypt, and how far we got with that?  AES or just DES?
+
+
+	-From Previous (2016'ish?)
+	x-Dropped to 4.4.0,5 due to lack of JDK1.8 support for unlimited encryption....Only JDK1.7 has this...Dandy.
+
+	-Clean up HashMap, etc from raw types.
+
+	-Add enhanced encryption
+		-AES-256 + SSHA-256
+		-Use PW
+		-Use Key (in prop file)
+		-Add multipart salt, munge it, extrap certain digits.  Write multipart to the clear.
+		
+		-Power Encrypting V2 (pw, key & salt):
+		
+			To Encrypt:
+				-Decode/Decrypt the internal key (IK) using blow fish...some internal password.				
+
+				-Gen a random salt (63 bits)
+				-Gen a H.SHA-256 (PW + IK) ==> secret1
+				-Gen a H.SHA-256 (salt + secret1) ==> secret2   
+ 
+ 				-Init.cipher(secret2 as salt, secret1 as key)
+ 				-Read up whole file
+ 				-Write literal salt to file (in the clear).
+ 				-Run encrypt on file stream
+ 				-Write out encrypted byte stream.
+ 				
+ 			To Decrypt:
+ 				-Decode/Decrypt the internal key (IK) using blow fish...some internal password.
+ 				
+ 				-Read Salt from file (63 bits)
+ 				
+				-Gen a H.SHA-256 (PW + IK) ==> secret1
+				-Gen a H.SHA-256 (salt + secret1) ==> secret2   
+
+ 				-Init.cipher(secret2 as salt, secret1 as key)
+ 				
+				-Read in File byte stream
+				-Run decrypt on stream
+				-Write out decrypted byte stream. 		
+
+		
+
+		-Power Encrypting
+
+		 	  I:  enc ( salt || hash  ( salt || pw ) ) 
+		 	 Ia:  enc ( h( salt ) && h( salt || pw ) )
+
+			 II:  enc ( salt || hash   (  key || salt || pw ))
+			 
+			 
+			IIa:  enc ( h( salt ) &&   h(  key && salt && pw ) )
+			
+					// Key is mut-shared (app internalized).
+					// Salt is genn'd, hash'd, and stored ITC.
+					// Hash is implicit Impl dependant?
+
+
+
+
+zzzzz
+	x-Strip Copyrights.
+
+	x-Refactor to multi-catch blocks.
+		x-BasicEncrypt
+		x-BasicDecrypt 
+
+	x-Add "string" Encrypt capabilities.
+	x-Add "string" Decrypt capabilities.
+
+	-Add validator for:
+		x-PW length, etc.
+		-Non-blank Filename, file exists ( gf? ).
+		x-Add UT for new Validators.
+		
+	x-Add UTs for:
+		x-Existing Basic Adapter.
+	
+	x-Add encrypt helper todo PBSPec, 
+		-Wire back in to Encrypt.
+		-Wire back in to Decrypt.
+		
+
+
+
+	x-Yank Citi Deps.	
+	x-Upgrade to java-1.7 
+	
+	

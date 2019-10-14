@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<REGION-BASED-CONFIG_CORRUPT_FILE>
+	<WS_URL_CORRUPT_FILE>
+
+		<!-- Should use Prod as default for this config -->
+		<DEFAULT>https://relap-dev5501.nam.nsroot.net:58214/Rel/Services/Security/MFAService</DEFAULT>
+		<PROD>https://relprdofdesb01a.nam.nsroot.net:58703/Rel/Services/Security/MFAService</PROD>
+		<COB>https://relcobswdesb01a.nam.nsroot.net:58703/Rel/Services/Security/MFAService</COB>
+
+		<!-- <DEFAULT>https://relap-dev5501.nam.nsroot.net:58214/Rel/Services/Security/MFAService</DEFAULT> -->
+		<!-- <LOCAL>http://relap-dev5501.nam.nsroot.net:60015/Rel/Services/Security/MFAService</LOCAL> -->
+		<!-- <LOCAL>http://relap-dev5501.nam.nsroot.net:60020/Rel/Services/Security/MFAService</LOCAL> -->
+		
+		<DEV1>https://relap-dev5501.nam.nsroot.net:58214/Rel/Services/Security/MFAService</DEV1>
+		<DEV2>https://relap-dev5501.nam.nsroot.net:58214/Rel/Services/Security/MFAService</DEV2>
+		<DEV3>https://relap-dev5501.nam.nsroot.net:60015/Rel/Services/Security/MFAService</DEV3>
+		<DEV4>https://relap-dev5501.nam.nsroot.net:60020/Rel/Services/Security/MFAService</DEV4>
+				
+		<UAT1>https://relap-uat5805.nam.nsroot.net:58315/Rel/Services/Security/MFAService</UAT1>
+		<UAT2>https://relap-uat5805.nam.nsroot.net:58315/Rel/Services/Security/MFAService</UAT2>
+		<UAT3>https://relap-uat5805.nam.nsroot.net:58315/Rel/Services/Security/MFAService</UAT3>
+		
+		<LOAD>https://relap-uat5805.nam.nsroot.net:58315/Rel/Services/Security/MFAService</LOAD>
+
+	</WS_URL>
+
+
+
+	<WS_TIMEOUT>
+
+		<DEFAULT>100000</DEFAULT>
+		<PROD>100000</PROD>
+		<COB>100000</COB>
+
+		<!-- <LOCAL>100000</LOCAL> <DEV>100000</DEV> <INT>100000</INT> <UAT1>100000</UAT1> 
+			<UAT2>100000</UAT2> <UAT3>100000</UAT3> <TRN1>100000</TRN1> <TRN2>100000</TRN2> 
+			<QA>100000</QA> <LOAD>100000</LOAD> -->
+
+	</WS_TIMEOUT>
+
+
+</REGION-BASED-CONFIG>

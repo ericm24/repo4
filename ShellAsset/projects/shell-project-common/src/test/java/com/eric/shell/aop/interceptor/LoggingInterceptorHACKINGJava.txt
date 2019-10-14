@@ -1,0 +1,79 @@
+/*
+ * Created by Eric Manley on Dec 12, 2008 
+ */
+
+package com.eric.shell.aop.interceptor;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Interceptor that provides trace logging for all non-domain, non-aspect
+ * classes, if enabled.
+ * 
+ * @author Manley
+ */
+@Aspect
+public class LoggingInterceptor
+{
+	private final Logger log = LoggerFactory.getLogger(getClass());
+
+	@Around("(( execution(* com.eric.shell..*.*(..)) || execution(* com.eric.shell..*.*(..)) ) "
+			+ " && !(execution(* com.eric.shell.domain.*.*(..)))"
+			+ " && !(execution(* com.eric.shell.aop.*.*(..))) )")
+	
+	public Object doLogging(ProceedingJoinPoint joinPoint) throws Throwable
+	{
+		if ( log.isDebugEnabled() )
+		{
+			String lineItem  = joinPoint.toShortString();
+			String lineItem2 = joinPoint.toShortString();	
+
+			// Below works on abstract classes, or parent classes, but cuts too-much off for concrete classes...
+			//lineItem = lineItem.substring(lineItem.indexOf("(") +1, lineItem.indexOf(")") -3) + "()";
+			
+			// after we do last scan, re-scan the result for something like:
+			// com.eric.shell.command.crypto.DecryptCommand.AbstractBaseCommand.setContext(..() BeginsAOP...
+			
+			// or:
+			// com.eric.shell.command.crypto.DecryptCommand.DecryptCommand.execute(() BeginsAOP...
+			
+			// Simply re-scan either for a left-paren, chop it off there, and add "()".   Ugggg!!!!
+			
+			lineItem = lineItem.substring(lineItem.indexOf("(") +1, lineItem.indexOf(")") ) + "()";
+
+			
+			// Hacking the joinPoint to try to get the ACTUAL logger that was originally callled.  We can get
+			// the class, method-name, etc, but when we actually try to log it, it comes out from the logger of the
+			// interceptor, not the actual class-method that called us...
+			
+			log.debug("{}.{} BeginsAOP...", new Object[]
+			{ // Skipp word "class"
+							joinPoint.getTarget().getClass().toString()
+									.substring(6), lineItem
+					});
+
+		}
+
+		final Object returnValue = joinPoint.proceed(joinPoint.getArgs());
+
+		if ( log.isDebugEnabled() )
+		{
+			String lineItem = joinPoint.toShortString();
+
+			lineItem = lineItem.substring(lineItem.indexOf("(") + 1, lineItem.indexOf(")") ) + "()";
+
+			log.debug("{}.{} EndsAOP...", new Object[]
+			{
+					joinPoint.getTarget().getClass().toString().substring(6),
+					lineItem
+			});
+		}
+
+		return( returnValue );
+	}
+
+}

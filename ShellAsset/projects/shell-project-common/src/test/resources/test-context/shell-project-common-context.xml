@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<!-- ************* Aspects ************* -->
+ 
+	<!-- ORIGINAL VERSION 
+	   <aop:aspectj-autoproxy />	   
+	-->
+
+	<!--  Non-IF cgilib-full.jar version
+	-->	 
+	
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+ 
+		<bean id="loggingInterceptor" 
+		   class="com.eric.shell.aop.interceptor.LoggingInterceptor" />
+
+	 
+		<!--  Test Harness 		-->	
+		<!-- Regular Commands 	-->
+		
+		<!--  Must make these IFs for Spring to Grab them... -->
+		   
+		<bean id="decryptCommand" 
+		   class="com.eric.shell.command.crypto.DecryptCommand" />
+ 
+  		<bean id="decryptCommand_UT"
+  		   class="com.eric.shell.command.crypto.DecryptCommand_UT" />
+  	
+  	  	<bean id="encryptCommand" 
+		   class="com.eric.shell.command.crypto.EncryptCommand" />
+  	  		   
+  		<bean id="encryptCommand_UT"
+  		   class="com.eric.shell.command.crypto.EncryptCommand_UT" />
+
+	  <!-- 
+  	  	<bean id="cryptoValidator" 
+		   class="com.eric.shell.validator.CryptoCommandValidator" />
+	-->
+  	  		   
+  		<bean id="cryptoCommandValidator_UT" 
+  		   class="com.eric.shell.validator.CryptoCommandValidator_UT" >
+  		   <!-- 
+  		   <property name="xProp" value="${MY_VALUE_VAR}"  />
+  		   -->
+  		</bean>
+ 	  		   
+  		<bean id="cryptoAdapter_UT"
+  		   class="com.eric.shell.domain.adapter.CryptoAdapter_UT" />
+		
+
+</beans>
