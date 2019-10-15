@@ -1,7 +1,5 @@
 /**
  * 
- * Main Command Line Controller Class to invoke Commands
- *  
  *  @author eric
  *  
  */

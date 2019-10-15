@@ -6,8 +6,8 @@
 #################
 ## Project Specific
 #################
-jdk-7u76-linux-x64.rpm
-jdk-8u91-linux-x64.rpm
+TargetEncryptFile.txt
+
 
 #################
 ## General Logging
