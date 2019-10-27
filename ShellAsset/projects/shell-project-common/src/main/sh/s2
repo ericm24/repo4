@@ -1,0 +1,62 @@
+#!/bin/bash
+# Command to UE with our files...
+#
+
+#---------------------------------------------------------------------------
+# Prior to running this script, 
+# ensure that the configuration files have been edited appropriately.
+#---------------------------------------------------------------------------
+
+
+# set -x
+
+	if [ $# -lt 3 ] 
+
+	then
+		echo " "
+		echo " "
+		echo " "
+		echo "Usage: $0 Command Params..."
+		echo " "
+		echo " "
+		echo " "
+		exit 1
+	fi
+
+
+	classPath=""
+	classPathBase=""
+	classPathLib=""
+	classPathLibAll=""
+	commandLine=""
+	
+	classPathBase="/apps/java/CShell"
+	classPathLib="$classPathBase/lib"
+
+	classPathLibAll="$classPathLib/log4j-1.2.14.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/spring-tx-4.1.6.RELEASE.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/spring-expression-4.1.6.RELEASE.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/spring-beans-4.1.6.RELEASE.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/spring-aop-4.1.6.RELEASE.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/slf4j-log4j12-1.5.10.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/slf4j-api-1.5.10.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/json-simple-1.1.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/commons-lang-2.4.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/aopalliance-1.0.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/cglib-nodep-2.2.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/aspectjweaver-1.6.1.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/commons-logging-1.1.1.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/commons-lang.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/commons-codec-1.10.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/hamcrest-core-1.2.1.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/spring-context-4.1.6.RELEASE.jar:"
+	classPathLibAll="$classPathLibAll$classPathLib/spring-core-4.1.6.RELEASE.jar"
+
+	classPath="$classPathBase/shell-project-common-4.4.1.0.jar"
+
+	classPath="$classPath:$classPathLibAll"
+
+	commandLine="java -Xmx1536m -classpath $classPath com/eric/shell/controller/CommandLineController $1 $2 $3 $4 $5 $6"
+
+	$commandLine
+
