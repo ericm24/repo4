@@ -11,21 +11,21 @@
         </layout>
     </appender>    
  
-    <appender  name="file.info"   class="org.apache.log4j.RollingFileAppender"> 
-        <param name="File"        value="/dev2/logs/shell-project-common.log"/>
+    <appender name="file.info" class="org.apache.log4j.RollingFileAppender"> 
+        <param name="File" value="./logs/shell-project-common.log"/>
 		<param name="MaxFileSize" value="10000KB"/>
     	
    		<!-- Keep nine backup files -->
    		<param name="MaxBackupIndex" value="9"/>  
     	
-        <layout   class="org.apache.log4j.PatternLayout">        
+        <layout class="org.apache.log4j.PatternLayout">        
             <param name="ConversionPattern" 
-		          value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5.5p   %-150.150c [] - %m%n"/>                                                  
+		 value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5.5p   %-150.150c [] - %m%n"/>                                                  
         </layout>
     </appender>
    
     <appender name="file.perf" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="/dev2/logs/shell-project-common_perf.log"/>
+        <param name="File" value="./logs/shell-project-common_perf.log"/>
 		<param name="MaxFileSize" value="10000KB"/>    	
     	
     	<!-- Keep nine backup files -->
@@ -38,18 +38,18 @@
     </appender>	 
 
     <logger name="com">
-            <level value="info" />
+            <level value="info"/>
     </logger>    
-    
-    <logger name="PERF" additivity="false">
-	    	<level value="error"/>
-        	<appender-ref ref="file.perf"/>
+     
+    <logger name="PERF">
+	    	<level value="info"/>	    	
+        	<appender-ref ref="file.perf"/>        	
     </logger>   
     
-    <root>
-            <level value="info"/>
+    <root>    
+            <level value="info"/>                 
            	<appender-ref ref="file.info"/>   
             <appender-ref ref="console.all"/>
     </root>     
-     
+    
 </log4j:configuration>
